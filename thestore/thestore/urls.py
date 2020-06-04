@@ -7,6 +7,7 @@ urlpatterns = [
     path('api-auth',include('rest_framework.urls')),
     path('api/',include('store.api.urls')),
     path('admin/', admin.site.urls),
+    path('', include('store.urls', namespace='store')),
 ]
 
 if settings.DEBUG:    

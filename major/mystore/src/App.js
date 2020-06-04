@@ -14,7 +14,7 @@ class App extends Component {
   }
   componentDidMount()
   {
-     Axios.get('http://127.0.0.1:8000/api/')
+     Axios.get('http://127.0.0.1:8000/')
      .then(res=>{
        this.setState({
          products:res.data
