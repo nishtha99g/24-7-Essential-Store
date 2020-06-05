@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {Card,CardImg,CardTitle,CardText,CardBody,CardSubtitle,Breadcrumb,BreadcrumbItem} from 'reactstrap';
-import Header from './HeaderComponent';
-import Footer from './FooterComponent';
+import {Card,CardImg,CardTitle,CardText,CardBody,CardSubtitle} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 function RenderCard({item}){
   return(
@@ -19,27 +18,27 @@ function RenderCard({item}){
 
 class Dashboard extends Component{
     render(){
-      const listItems = this.props.products.map((d) =>
+      const listItems = this.props.categories.map((d) =>
       <div className="col-12 col-sm-3 m-1">
       <Card>
-        <CardImg src={d.image} alt={d.name} />
-          <CardBody>
-            <CardTitle>{d.name}</CardTitle>
-             <CardSubtitle>{d.designation}</CardSubtitle>
-          </CardBody>
-        <CardText>{d.description}</CardText>
+        <Link to={`/category/${d.slug}`}>
+          <CardImg src={d.image} alt={d.name} />
+            <CardBody>
+              <CardTitle>{d.name}</CardTitle>
+              <CardSubtitle>{d.designation}</CardSubtitle>
+            </CardBody>
+          <CardText>{d.description}</CardText>
+        </Link>
       </Card>
       </div>
       );
         return(
           <div>
-          <Header />
           <div className="col-12">
            <div className="row">
             {listItems }
             </div>
           </div>
-          <Footer />
           </div>
         );
     }
