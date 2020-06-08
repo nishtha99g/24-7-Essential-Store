@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Card,CardImg,CardTitle,CardText,CardBody,CardSubtitle} from 'reactstrap';
+import {Link} from 'react-router-dom';
 import Axios from 'axios';
 
 class ProductList extends Component{
@@ -19,18 +20,27 @@ class ProductList extends Component{
          })
       }
     render(){
-        const product_list = this.state.products_cat.map((d) =>
-        <div className="col-12 col-sm-3 m-1">
-        <Card>
-            <CardImg src={d.image} alt={d.name} />
-              <CardBody>
-                <CardTitle>{d.name}</CardTitle>
-                <CardSubtitle>{d.designation}</CardSubtitle>
-              </CardBody>
-            <CardText>{d.description}</CardText>
-        </Card>
-        </div>
-        );
+        const product_list = this.state.products_cat.map((d) => (
+          <div className="col-12 col-sm-3 mb-2 ">
+            <div className="p-2 ">
+              <Card>
+                <Link to={`/category/${d.id}`}>
+                  <CardImg
+                    top
+                    width="100%"
+                    height="250px"
+                    src={d.image}
+                    alt={d.name}
+                  />
+                  <CardBody>
+                    <CardTitle>{d.name}</CardTitle>
+                  </CardBody>
+                  <CardText>{d.description} {d.id}</CardText>
+                </Link>
+              </Card>
+            </div>
+          </div>
+        ));
         return (
             <div>
                 <div className="col-12">

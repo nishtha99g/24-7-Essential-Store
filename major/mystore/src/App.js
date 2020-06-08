@@ -9,7 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories: []
+      categories: [],
+      products: [],
     };
   }
   componentDidMount()
@@ -20,12 +21,18 @@ class App extends Component {
          categories:res.data
        }); 
      })
+     Axios.get('http://127.0.0.1:8000/api')
+     .then(res=>{
+       this.setState({
+         products:res.data
+       }); 
+     })
   }
   render(){
     return (
     <BrowserRouter>
     <div>
-     <Main categories={this.state.categories}/>
+     <Main categories={this.state.categories} products={this.state.products}/>
     </div>
     </BrowserRouter>
   );
