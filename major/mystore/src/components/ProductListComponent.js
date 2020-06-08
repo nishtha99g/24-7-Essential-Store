@@ -24,7 +24,7 @@ class ProductList extends Component{
           <div className="col-12 col-sm-3 mb-2 ">
             <div className="p-2 ">
               <Card>
-                <Link to={`/category/${d.id}`}>
+                <Link to={`/category/${this.props.name}/${d.id}`}>
                   <CardImg
                     top
                     width="100%"
