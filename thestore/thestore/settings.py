@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'store.apps.StoreConfig',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,5 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_ALLOW_ALL=True
+
+CART_SESSION_ID = 'cart'

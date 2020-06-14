@@ -27,6 +27,8 @@ class App extends Component {
          products:res.data
        }); 
      })
+     console.log(this.state.products);
+     
   }
   render(){
     return (
