@@ -11,13 +11,12 @@ from .forms import CartAddProductForm
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    form = CartAddProductForm(request.POST)
-    if form.is_valid():
-        cd = form.cleaned_data
-        cart.add(product=product,
-        quantity=cd['quantity'],
-        update_quantity=cd['update'])
-    return redirect('cart:cart_detail')
+    serializer = CartFormSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        cart.add(product=product,quantity=request.POST['quantity'],update_quantity=request.POST['update'])
+        return Response(serializer.data, status=201)        
+    return Response(serializer.errors, status=404)
 
 @api_view(['DELETE'])
 def cart_remove(request, product_id):
@@ -29,5 +28,4 @@ def cart_remove(request, product_id):
 @api_view(['GET'])
 def cart_detail(request):
     cart = Cart(request)
-    serializer = ProductSerializer(product, context={'request': request})
-    return Response(request, 'cart/detail.html', {'cart': cart})
+    return Response(request, {'cart': cart})
