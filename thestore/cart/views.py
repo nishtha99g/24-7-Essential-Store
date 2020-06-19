@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.shortcuts import redirect,get_object_or_404
 from store.models import Product
-from store.api.serializers import CartFormSerializer
+from store.serializers import CartFormSerializer
 from .cart import Cart
 from .forms import CartAddProductForm
 
