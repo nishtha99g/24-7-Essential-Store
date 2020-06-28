@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import Dashboard from './DashboardComponent';
 import ProductList from './ProductListComponent';
 import ProductDetail from './ProductDetailComponent';
+import SignupForm from './SignUpForm';
+import CartDetail from './CartDetail';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import {Switch,Route,Redirect,withRouter} from 'react-router-dom';
@@ -18,9 +20,11 @@ class Main extends Component {
     <div>
     <Header />
       <Switch>
+        <Route path='' component={SignupForm} />
         <Route exact path='/category' component={() => <Dashboard categories={this.props.categories} />} />
         <Route exact path='/category/:name' component={Cat_Product} />
         <Route path='/category/:name/:productId' component={Product_Det} />
+        <Route path='/cart' component={CartDetail} />
       </Switch>
     <Footer />
     </div>

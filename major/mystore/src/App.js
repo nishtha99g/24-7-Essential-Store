@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import './App.css';
-import { PRODUCTS } from './shared/product';
 import Main from './components/MainComponent';
 import Axios from 'axios';
 
@@ -21,7 +20,7 @@ class App extends Component {
          categories:res.data
        }); 
      })
-     Axios.get('http://127.0.0.1:8000/api')
+     Axios.get('http://127.0.0.1:8000/products')
      .then(res=>{
        this.setState({
          products:res.data
